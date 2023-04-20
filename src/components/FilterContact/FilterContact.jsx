@@ -2,7 +2,8 @@ import React from "react";
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
-import { getFilter, updateFilter } from "redux/contactsSlice";
+import { getFilter} from 'redux/selectors';
+import {updateFilter} from 'redux/filterSlice'
 
 
 export const FilterContact =() => {

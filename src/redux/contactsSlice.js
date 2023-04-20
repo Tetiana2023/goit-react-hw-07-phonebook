@@ -1,29 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import {fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 export const contactsSlice = createSlice({
-    name: 'phonebook',
-    initialState: {contacts: [], filter: ""},
-    reducers:{
-        // addContacts: (state, action)=>{
-        //     state.contacts.push(action.payload)
-        // },
-        // deleteContacts: (state, action)=> {
-        //     state.contacts = state.contacts.filter(contact => contact.id !== action.payload)
-        // },
-        // updateFilter: (state, action) => {
-        //     state.filter = action.payload
-        // }
+  name: 'phonebook',
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+  ExtraReducers: {
+    [fetchContacts.pending]: handlePending,
+    [fetchContacts.fulfilled]: (state, action) =>{
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      },
+      [fetchContacts.rejected]: handleRejected,
 
-    }
-})
+      [addContact.pending]: handlePending,
+      [addContact.fulfilled]:(state, action) =>{
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
+      },
+      [addContact.rejected]:handleRejected,
 
+      [deleteContact.pending]:handlePending,
+      [deleteContact.fulfilled]:(state, action)=> {
+        state.isLoading = false;
+        state.error = null;
+        state.items= state.items.filter(contact => contact.id !== action.payload)
+      },
+      [deleteContact.rejected]: handleRejected,
 
-  
- export  const phonebookReducer =  contactsSlice.reducer;
+  },
+});
 
-// export const {addContacts, deleteContacts, updateFilter } = contactsSlice.actions;
-
+export const phonebookReducer = contactsSlice.reducer;
 
 
