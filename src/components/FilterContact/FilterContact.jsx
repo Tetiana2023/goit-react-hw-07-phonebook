@@ -22,9 +22,9 @@ export const FilterContact =() => {
             type="text"
             value={filter}
             name="filter"
-            onChange={event => {
-                dispatch(updateFilter(event.target.value));
-              }}
+            onChange={event => 
+                dispatch(updateFilter(event.target.value))
+              }
             >
             </input>
         </label>

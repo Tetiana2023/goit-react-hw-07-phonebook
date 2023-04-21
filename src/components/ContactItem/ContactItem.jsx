@@ -4,29 +4,32 @@ import css from './ContactItem.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-
-export const ContactItem = ({name, number, id})=>{
-    const dispatch = useDispatch()
-    // const {name, number, id} = contact
-
-    return(
-        <>
-        <div className={css.item}>
-            <p>{name}:</p>
-            <p>{number}</p>
-            <button className={css.button} type="button" onClick= {()=> dispatch(deleteContact(id))}>Delete</button>
-        </div>
-        </>
-    )
+export const ContactItem = ({ contact }) => {
+  const dispatch = useDispatch();
+  const { name, number, id } = contact;
+  return (
+    <>
+      <div className={css.item}>
+        <p>{name}:</p>
+        <p>{number}</p>
+        <button
+          className={css.button}
+          type="button"
+          onClick={() => dispatch(deleteContact(id))}
+        >
+          Delete
+        </button>
+      </div>
+    </>
+  );
 };
 
-ContactItem.propTypes = { 
-    contacts: PropTypes.arrayOf(
+ContactItem.propTypes = {
+  contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       phone: PropTypes.string.isRequired,
     })
   ),
-
-}
+};

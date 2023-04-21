@@ -21,7 +21,7 @@ export const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  ExtraReducers: {
+  extraReducers: {
     [fetchContacts.pending]: handlePending,
     [fetchContacts.fulfilled]: (state, action) => {
       state.isLoading = false;
@@ -47,7 +47,7 @@ export const contactsSlice = createSlice({
       state.items = state.items.filter(
         contact => contact.id !== action.payload
       );
-      // handleFulfilled(state)
+      // handleFulfilled(state);
     },
     [deleteContact.rejected]: handleRejected,
   },
