@@ -4,10 +4,10 @@ import { fetchContacts, addContact, deleteContact } from './operations';
 const handlePending = state => {
   state.isLoading = true;
 };
-const handleFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
+// const handleFulfilled = state => {
+//   state.isLoading = false;
+//   state.error = null;
+// };
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -27,7 +27,7 @@ export const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
-      handleFulfilled(state);
+      // handleFulfilled(state);
     },
     [fetchContacts.rejected]: handleRejected,
 
@@ -36,7 +36,7 @@ export const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items.push(action.payload);
-      handleFulfilled(state);
+      // handleFulfilled(state);
     },
     [addContact.rejected]: handleRejected,
 
@@ -47,7 +47,7 @@ export const contactsSlice = createSlice({
       state.items = state.items.filter(
         contact => contact.id !== action.payload
       );
-      handleFulfilled(state)
+      // handleFulfilled(state)
     },
     [deleteContact.rejected]: handleRejected,
   },

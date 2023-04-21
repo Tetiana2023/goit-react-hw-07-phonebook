@@ -28,15 +28,26 @@ export const App = () => {
           <FormContact  />
         </Section>
         {contacts.length > 0 && 
-        <Section title="Contacts">
-          <FilterContact  />
-            <ContactList />
-            {isLoading && !error && <b>Request in progress...</b>}
-        </Section>
-        }
+    <Section title="Contacts">
+      <FilterContact  />
+        <ContactList />
+        {isLoading && !error && <b>Request in progress...</b>}
+    </Section>    }
       </div>
     );
 };
 
-
-
+// return (
+//   <div className={css.container}>
+//     <Section title="Phonebook">
+//       <FormContact  />
+//     </Section>
+//     {contacts.length > 0 && 
+//     <Section title="Contacts">
+//       <FilterContact  />
+//         <ContactList />
+//         {isLoading && !error && <b>Request in progress...</b>}
+//     </Section>
+//     }
+//   </div>
+// );

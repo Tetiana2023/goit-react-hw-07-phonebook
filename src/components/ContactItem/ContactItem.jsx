@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
 
-export const ContactItem = ({contact})=>{
+export const ContactItem = ({name, number, id})=>{
     const dispatch = useDispatch()
-    const {name, number, id} = contact
+    // const {name, number, id} = contact
 
     return(
         <>
@@ -20,9 +20,13 @@ export const ContactItem = ({contact})=>{
     )
 };
 
-ContactItem.propTypes = {
-    name:PropTypes.string.isRequired,
-    number:PropTypes.string.isRequired,
-    hendleDeleteContact:PropTypes.func.isRequired,
+ContactItem.propTypes = { 
+    contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+    })
+  ),
 
 }
