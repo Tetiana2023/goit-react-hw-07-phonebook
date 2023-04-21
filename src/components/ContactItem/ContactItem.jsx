@@ -4,9 +4,12 @@ import css from './ContactItem.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-export const ContactItem = ({ contact }) => {
+export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
-  const { name, number, id } = contact;
+  // const { name, number, id } = contact;
+  const onClick = ()=> {
+    dispatch(deleteContact({id}))
+  }
   return (
     <>
       <div className={css.item}>
@@ -15,7 +18,8 @@ export const ContactItem = ({ contact }) => {
         <button
           className={css.button}
           type="button"
-          onClick={() => dispatch(deleteContact(id))}
+          onClick={onClick}
+          // onClick={() => dispatch(deleteContact(id))}
         >
           Delete
         </button>
