@@ -7,6 +7,7 @@ import { deleteContact } from 'redux/operations';
 export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
   // const { name, number, id } = contact;
+
   const onClick = ()=> {
     dispatch(deleteContact({id}))
   }
