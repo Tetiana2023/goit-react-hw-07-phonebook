@@ -4,11 +4,11 @@ import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { getFiltredContacts } from 'redux/selectors';
+import { selectFiltredContacts } from 'redux/selectors';
 // import { deleteContact } from 'services/fetch';
 
 export const ContactList = () => {
-  const FiltredContacts = useSelector(getFiltredContacts);
+  const FiltredContacts = useSelector(selectFiltredContacts);
 
   return (
     <ul>
